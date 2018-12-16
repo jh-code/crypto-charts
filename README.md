@@ -1,5 +1,7 @@
 # Crypto Prices
 
+[![Build Status](https://travis-ci.org/jh-code/crypto-prices.svg?branch=master)](https://travis-ci.org/jh-code/crypto-prices) 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3.
 
 ## About
