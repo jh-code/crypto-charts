@@ -1,0 +1,103 @@
+@import '~@angular/material/theming';
+@import 'palette';
+
+$font-family: unquote("'Montserrat', sans-serif");
+$font-size-base: 1rem;
+
+$custom-typography: mat-typography-config(
+  $font-family: $font-family,
+  $body-1: mat-typography-level(14px, 20px, 500),
+  $headline: mat-typography-level(28px, 36px, 400)
+);
+
+// Background palette for light themes.
+$mat-light-theme-background: (
+  status-bar: map_get($app-dark, 300),
+  app-bar: map_get($app-dark, 100),
+  background: map_get($app-light, 50),
+  hover: rgba(mat-color(mat-palette($app-dark)), 0.04),
+  card: white,
+  dialog: white,
+  disabled-button: rgba(mat-color(mat-palette($app-dark)), 0.12),
+  raised-button: white,
+  focused-button: $dark-focused,
+  selected-button: map_get($app-dark, 300),
+  selected-disabled-button: map_get($app-dark, 400),
+  disabled-button-toggle: map_get($app-dark, 200),
+  unselected-chip: map_get($app-dark, 300),
+  disabled-list-option: map_get($app-dark, 200),
+);
+
+// Background palette for dark themes.
+$mat-dark-theme-background: (
+  status-bar: mat-color(mat-palette($app-dark)),
+  app-bar: map_get($app-dark, 900),
+  background: mat-color(mat-palette($app-dark)),
+  hover: rgba(white, 0.04),
+  card: map_get($app-dark, 800),
+  dialog: map_get($app-dark, 800),
+  disabled-button: rgba(white, 0.12),
+  raised-button: map-get($app-dark, 800),
+  focused-button: $light-focused,
+  selected-button: map_get($app-dark, 900),
+  selected-disabled-button: map_get($app-dark, 800),
+  disabled-button-toggle: mat-color(mat-palette($app-dark)),
+  unselected-chip: map_get($app-dark, 700),
+  disabled-list-option: mat-color(mat-palette($app-dark)),
+);
+
+// Foreground palette for light themes.
+$mat-light-theme-foreground: (
+  base: mat-color(mat-palette($app-dark)),
+  divider: $dark-dividers,
+  dividers: $dark-dividers,
+  disabled: $dark-disabled-text,
+  disabled-button: rgba(mat-color(mat-palette($app-dark)), 0.26),
+  disabled-text: $dark-disabled-text,
+  elevation: mat-color(mat-palette($app-dark)),
+  hint-text: $dark-disabled-text,
+  secondary-text: $dark-secondary-text,
+  icon: rgba(mat-color(mat-palette($app-dark)), 0.54),
+  icons: rgba(mat-color(mat-palette($app-dark)), 0.54),
+  text: mat-color(mat-palette($app-dark)),
+  slider-min: rgba(mat-color(mat-palette($app-dark)), 0.87),
+  slider-off: rgba(mat-color(mat-palette($app-dark)), 0.26),
+  slider-off-active: rgba(mat-color(mat-palette($app-dark)), 0.38),
+);
+
+// Foreground palette for dark themes.
+$mat-dark-theme-foreground: (
+  base: white,
+  divider: $light-dividers,
+  dividers: $light-dividers,
+  disabled: $light-disabled-text,
+  disabled-button: rgba(white, 0.3),
+  disabled-text: $light-disabled-text,
+  elevation: mat-color(mat-palette($app-dark)),
+  hint-text: $light-disabled-text,
+  secondary-text: $light-secondary-text,
+  icon: white,
+  icons: white,
+  text: white,
+  slider-min: white,
+  slider-off: rgba(white, 0.3),
+  slider-off-active: rgba(white, 0.3),
+);
+
+$app-light-theme: (
+  primary: mat-palette($app-primary),
+  accent: mat-palette($app-accent),
+  warn: mat-palette($app-warn),
+  is-dark: false,
+  foreground: $mat-light-theme-foreground,
+  background: $mat-light-theme-background
+);
+
+$app-dark-theme: (
+  primary: mat-palette($app-primary),
+  accent: mat-palette($app-accent),
+  warn: mat-palette($app-warn),
+  is-dark: true,
+  foreground: $mat-dark-theme-foreground,
+  background: $mat-dark-theme-background
+);

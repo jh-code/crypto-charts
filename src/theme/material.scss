@@ -1,0 +1,46 @@
+@import 'variables';
+
+@include mat-core($custom-typography);
+@include angular-material-theme($app-dark-theme);
+
+a {
+  color: mat-color(mat-palette($app-light));
+
+  &:hover {
+    color: mat-color(mat-palette($app-accent));
+    text-decoration: none;
+  }
+}
+
+.mat-app-background {
+  transition: background-color 0.25s linear;
+}
+
+.ngx-charts {
+  text {
+    fill: map-get($mat-dark-theme-foreground, 'text');
+  }
+}
+
+.light-theme {
+  @include angular-material-theme($app-light-theme);
+
+  .ngx-charts {
+    text {
+      fill: map-get($mat-light-theme-foreground, 'text');
+    }
+  }
+
+  a {
+    color: mat-color(mat-palette($app-dark));
+  }
+}
+
+.bg-primary-accent {
+  background-image: linear-gradient(
+    to right,
+    mat-color(mat-palette($app-primary)),
+    mat-color(mat-palette($app-accent))
+  ) !important;
+  color: white !important;
+}

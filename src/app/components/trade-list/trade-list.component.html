@@ -1,0 +1,34 @@
+<mat-card *ngIf="current">
+  <ngx-datatable class="expandable" style="height: 350px;" [rows]="trades" [limit]="20" [scrollbarV]="true" columnMode="force"
+    [headerHeight]="35" [rowHeight]="25">
+    <ngx-datatable-column name="Size" [sortable]="false">
+      <ng-template let-column="column" ngx-datatable-header-template>
+        <p class="text-right">{{column.name}}</p>
+      </ng-template>
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <p class="text-right" [class.buy]="row.side === 'buy'" [class.sell]="row.side === 'sell'">
+          {{value | priceString}}
+        </p>
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Price" [sortable]="false">
+      <ng-template let-column="column" ngx-datatable-header-template>
+        <p class="text-center" style="line-height: 1em;">
+          <span>{{column.name}}</span>
+          <br>
+          <span><small>{{current.base_currency}}</small></span>
+        </p>
+      </ng-template>
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        <p class="text-center">{{value | priceString}}</p>
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Time" [sortable]="false">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        <span><mat-hint>{{value | date: 'H:mm:ss'}}</mat-hint></span>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+</mat-card>

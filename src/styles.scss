@@ -1,0 +1,35 @@
+@import '~bootstrap/scss/bootstrap';
+@import 'theme/material';
+
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+app-root {
+  font-family: $font-family;
+}
+
+app-root {
+  display: block;
+}
+
+.subheading {
+  font-family: 'Libre Baskerville', serif !important;
+}
+
+button:focus {
+  outline: none;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  transition-delay: 36000s;
+}

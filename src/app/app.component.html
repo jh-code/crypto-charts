@@ -1,0 +1,27 @@
+<div id="app"
+  class="mat-app-background mat-typography h-100"
+  [class.dark-theme]="(theme$ | async) === 'dark-theme'"
+  [class.light-theme]="(theme$ | async) === 'light-theme'">
+  <mat-toolbar color="primary" class="bg-primary-accent">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 d-flex align-items-center">
+          <h1 id="logo" class="flex-grow-1">Crypto Prices</h1>
+
+          <div id="top-menu">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <span mat-menu-item [disableRipple]="true">
+                <mat-slide-toggle (change)="_setTheme($event)">Light Theme</mat-slide-toggle>
+              </span>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-toolbar>
+
+  <router-outlet></router-outlet>
+</div>
