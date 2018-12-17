@@ -13,8 +13,8 @@
       </mat-form-field>
 
       <mat-form-field class="mr-4" *ngIf="selectedExchange">
-        <mat-select placeholder="Select a trading pair" [(ngModel)]="selectedProduct" (selectionChange)="_selectProduct($event)">
-          <mat-option *ngFor="let product of products$ | async" [value]="product">{{product.display_name}}</mat-option>
+        <mat-select placeholder="Select a trading pair" [(ngModel)]="selectedProduct" (valueChange)="selectProduct($event)">
+          <mat-option *ngFor="let product of products" [value]="product">{{product.display_name}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
