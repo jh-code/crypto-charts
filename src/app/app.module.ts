@@ -24,7 +24,7 @@ import { CoinbaseProService } from './services/coinbase-pro.service';
     AppRoutingModule,
     HttpClientModule,
     NgxsModule.forRoot([AppState, TradeState], { developmentMode: !environment.production }),
-    NgxsLoggerPluginModule.forRoot(),
+    // NgxsLoggerPluginModule.forRoot(),
     MatToolbarModule,
     MatMenuModule,
     MatButtonModule,
