@@ -75,7 +75,6 @@ export class TradeState {
       .pipe(
         tap((trades: CoinbaseProTrade[]): void => {
           patchState({ trades });
-          console.log(trades);
         })
       );
   }
