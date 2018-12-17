@@ -23,7 +23,7 @@ export class CoinbaseProService {
   ) { }
 
   private _onOpen = (event: Event): void => {
-    console.log('++ Socket open', event);
+    // console.log('++ Socket open', event);
     this.subscribeToProduct(this.subscribeProduct);
 
     setInterval(() => {
@@ -32,11 +32,11 @@ export class CoinbaseProService {
   }
 
   private _onError = (event: Event): void => {
-    console.log('++ Socket error', event);
+    // console.log('++ Socket error', event);
   }
 
   private _onClose = (event: CloseEvent): void => {
-    console.log('++ Socket close', event);
+    // console.log('++ Socket close', event);
   }
 
   private _onMessage = (message: MessageEvent): void => {
@@ -48,7 +48,6 @@ export class CoinbaseProService {
         break;
       case 'ticker':
         if (data.trade_id) {
-          console.log('+++', data);
           const { price, side, last_size, time, trade_id } = data;
           const newTrade: CoinbaseProTrade = { price, side, size: last_size, time, trade_id };
 
@@ -105,8 +104,6 @@ export class CoinbaseProService {
       product_ids: [productId],
       channels: [{ name: 'ticker' }]
     };
-
-    console.log('++ Subscribing', data);
 
     this.socket.send(JSON.stringify(data));
   }

@@ -1,5 +1,5 @@
 import { State, Selector, Action, StateContext } from '@ngxs/store';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 
 import {
   FetchProducts, SubscribeProduct, FetchProductTicker, FetchProductTrades, AddTrade, UpdatePrice, CloseSocket
@@ -36,11 +36,11 @@ export class TradeState {
     return [
       {
         name: state.current.quote_currency + ' = 1 ' + state.current.base_currency,
-        value: parseFloat(state.price)
+        value: parseFloat(state.price).toString()
       },
       {
         name: 'Last Trade Size',
-        value: parseFloat(lastTrade.size)
+        value: parseFloat(lastTrade.size).toString()
       }
     ];
   }
@@ -54,7 +54,8 @@ export class TradeState {
     // TODO: support different exchanges
     return this.coinbaseProService.fetchProducts()
       .pipe(
-        tap((products: CoinbaseProProduct[]) => patchState({ products }))
+        map(products => this._sortByPropertyAlphabetical(products, 'id')),
+        tap(products => patchState({ products }))
       );
   }
 
@@ -75,7 +76,6 @@ export class TradeState {
       .pipe(
         tap((trades: CoinbaseProTrade[]): void => {
           patchState({ trades });
-          console.log(trades);
         })
       );
   }
@@ -104,6 +104,14 @@ export class TradeState {
   @Action(CloseSocket)
   closeSocket({ }: StateContext<TradeStateModel>) {
     this.coinbaseProService.closeSocket();
+  }
+
+  private _sortByPropertyAlphabetical(array: any, prop: string): any[] {
+    return array.sort((a, b) => {
+      const aText = a[prop].toUpperCase();
+      const bText = b[prop].toUpperCase();
+      return (aText < bText) ? -1 : (aText > bText) ? 1 : 0;
+    });
   }
 
 }

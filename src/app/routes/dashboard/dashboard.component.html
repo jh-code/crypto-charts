@@ -13,7 +13,7 @@
       </mat-form-field>
 
       <mat-form-field class="mr-4" *ngIf="selectedExchange">
-        <mat-select placeholder="Select a trading pair" [(ngModel)]="selectedProduct" (selectionChange)="_selectProduct($event)">
+        <mat-select placeholder="Select a trading pair" [(ngModel)]="selectedProduct" (valueChange)="selectProduct($event)">
           <mat-option *ngFor="let product of products$ | async" [value]="product">{{product.display_name}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -23,7 +23,7 @@
       <mat-divider class="mb-3"></mat-divider>
 
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-sm-6 col-md-7 col-lg-8">
           <div style="height: 150px;">
             <ngx-charts-number-card
               [scheme]="chartColorScheme"
@@ -34,7 +34,7 @@
           <p class="lead text-center">Real-time charts coming soon!</p>
         </div>
 
-        <div class="d-none d-lg-block col-lg-4">
+        <div class="col-sm-6 col-md-5 col-lg-4">
           <app-trade-list [current]="current$ | async" [trades]="trades$ | async"></app-trade-list>
         </div>
       </div>
