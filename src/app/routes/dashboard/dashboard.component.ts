@@ -50,11 +50,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-
-  }
-
-  public closeSocket(): void {
-    this.store.dispatch(new CloseSocket);
+    this.store.dispatch(new CloseSocket());
   }
 
 }
