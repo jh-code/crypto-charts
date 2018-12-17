@@ -420,6 +420,9 @@ MIT
 
 @angular/material/slide-toggle
 
+@ngxs/logger-plugin
+MIT
+
 zone.js
 MIT
 The MIT License
