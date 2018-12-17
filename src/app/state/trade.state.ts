@@ -36,11 +36,11 @@ export class TradeState {
     return [
       {
         name: state.current.quote_currency + ' = 1 ' + state.current.base_currency,
-        value: parseFloat(state.price)
+        value: parseFloat(state.price).toString()
       },
       {
         name: 'Last Trade Size',
-        value: parseFloat(lastTrade.size)
+        value: parseFloat(lastTrade.size).toString()
       }
     ];
   }
